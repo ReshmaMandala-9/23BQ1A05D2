@@ -196,12 +196,42 @@ so, it would be better if we give desc order by operational_cost or service dura
 
 ####
 
-SELECT *
-FROM notifications
-WHERE user_id = ?
-  AND status = 'unread'
-ORDER BY created_at DESC
-LIMIT 10;
+## SELECT *
+ ## FROM notifications
+## WHERE user_id = ?
+ ## AND status = 'unread'
+## ORDER BY created_at DESC
+## LIMIT 10;
 
 
 
+# STAGE 4
+## 1.Don't fetch the full notification list on every page
+only  request what you need in the UI
+.unread count
+#
+.latest 1-3 notifications
+#
+only the badge data
+
+## 
+2.Load full notifications on demand
+##
+3.use light weight endpoints:use simple and efficient queries.
+##
+4.cache on the clent data: sore the data , which the user is frequently visiting temporarily.
+#
+5.paginate the notification history: if the students need the older notifaction and all use pagination technique.
+
+
+##
+by doing all this the UI will be user friendly and it will be better if we can:
+#
+1.Show a badge count on evvery page
+#
+2.load summary data only
+#
+3.open full list where user wants data only
+#
+4.keep page transitions fast.
+                                 
