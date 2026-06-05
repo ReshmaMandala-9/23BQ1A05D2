@@ -133,8 +133,11 @@ Response:
 
 
  # STAGE 2
+ ###
  create database vehicle_scheduling;
+ ###
 use vehicle_scheduling;
+####
 CREATE TABLE SCHEDULE (
   schedule_id INT AUTO_INCREMENT PRIMARY KEY,
   vehicle_id INT NOT NULL,
@@ -180,5 +183,25 @@ INSERT INTO schedule (
 );
 ###
 # STAGE 3
+Already the query is optimised because it uses:
+where , orderby and desc
+
+these will reduce the scanning of every row and computational cost.
+
+but it is inefficient for 5,00,000 requests, so it will be better if we reduce the number of scans.
+
+initially ,let us assume that the system is doing 50,000 scans and it is not efficient for 5,00,000 scans
+
+so, it would be better if we give desc order by operational_cost or service duration and giving a limit value;
+
+####
+
+SELECT *
+FROM notifications
+WHERE user_id = ?
+  AND status = 'unread'
+ORDER BY created_at DESC
+LIMIT 10;
+
 
 
