@@ -142,7 +142,7 @@ CREATE TABLE SCHEDULE (
   service_duration INT NOT NULL,
   daily_mechanic_hour_budget INT NOT NULL
 );
-
+###
 INSERT INTO schedule (
   vehicle_id,
   operational_score,
@@ -154,6 +154,7 @@ INSERT INTO schedule (
   4,
   8
 );
+###
 INSERT INTO schedule (
   vehicle_id,
   operational_score,
@@ -165,6 +166,7 @@ INSERT INTO schedule (
   40,
   4
 );
+###
 INSERT INTO schedule (
   vehicle_id,
   operational_score,
@@ -176,7 +178,7 @@ INSERT INTO schedule (
   20,
   12
 );
-
+###
 # STAGE 3
 
 
