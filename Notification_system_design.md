@@ -133,19 +133,22 @@ Response:
 
 
  # STAGE 2
- ###
- create database vehicle_scheduling;
- ###
-use vehicle_scheduling;
-####
-CREATE TABLE SCHEDULE (
+ ## Stage 2 SQL commands
+
+Run these in your MySQL client:
+
+```sql
+CREATE DATABASE vehicle_scheduling;
+USE vehicle_scheduling;
+
+CREATE TABLE schedule (
   schedule_id INT AUTO_INCREMENT PRIMARY KEY,
   vehicle_id INT NOT NULL,
   operational_score INT NOT NULL,
   service_duration INT NOT NULL,
   daily_mechanic_hour_budget INT NOT NULL
 );
-###
+
 INSERT INTO schedule (
   vehicle_id,
   operational_score,
@@ -157,7 +160,7 @@ INSERT INTO schedule (
   4,
   8
 );
-###
+
 INSERT INTO schedule (
   vehicle_id,
   operational_score,
@@ -169,7 +172,7 @@ INSERT INTO schedule (
   40,
   4
 );
-###
+
 INSERT INTO schedule (
   vehicle_id,
   operational_score,
@@ -181,15 +184,18 @@ INSERT INTO schedule (
   20,
   12
 );
-###
-# STAGE 3
-A## Why this query is better
+```
+
+ After this, your `vehicle_scheduling.schedule` table will exist and contain the three sample rows.
+ 
+ # STAGE 3
+ Why this query is better
 
 Your query is already using the right pattern:
 
 - `WHERE user_id = ? AND status = 'unread'`
 - `ORDER BY created_at DESC`
-- `LIMIT 10`
+
 
 That is good because it:
 - restricts rows to the current user
@@ -393,3 +399,6 @@ If `notify all` stops mid-way, don’t restart blindly. Use:
 - idempotency
 
 That gives a reliable notification system and avoids broken UI or duplicate sends.
+
+
+
